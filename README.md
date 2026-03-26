@@ -1,16 +1,67 @@
-# safeguard
+# SafeOps AI
 
-A new Flutter project.
+SafeOps AI is a Flutter mobile app for factory workers. It provides:
 
-## Getting Started
+- splash, login, signup, and home screens
+- Supabase authentication with email/password and Google sign-in
+- a worker dashboard that shows PPE history records
+- a real-time accident alarm triggered from the Supabase `alarms` table
 
-This project is a starting point for a Flutter application.
+## Tech Stack
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter
+- Supabase Auth
+- Supabase database polling
+- `audioplayers` for alarm audio
+- `vibration` for device vibration
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Run the App
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Use your Supabase project values when running the app:
+
+```powershell
+flutter run `
+  --dart-define=SUPABASE_URL=https://YOUR_PROJECT.supabase.co `
+  --dart-define=SUPABASE_ANON_KEY=YOUR_ANON_KEY
+```
+
+## Supabase Requirements
+
+### Auth
+
+Enable the auth methods you want to use:
+
+- Email and Password
+- Google
+
+For Google sign-in on Android, the redirect URL must include:
+
+```text
+io.supabase.flutter://login-callback/
+```
+
+### Alarm Table
+
+The app polls the Supabase `alarms` table every 3 seconds.
+
+Expected columns:
+
+- `id`
+- `location`
+- `is_fire`
+- `is_fall`
+
+Alarm behavior:
+
+- `is_fire = true` triggers a critical alert
+- `is_fall = true` triggers a high alert
+- either one starts the alarm, vibration, and full-screen alert dialog
+
+## Verification
+
+Run the checks with:
+
+```powershell
+flutter analyze
+flutter test
+```

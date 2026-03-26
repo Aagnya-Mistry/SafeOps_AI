@@ -40,7 +40,7 @@ class AppLogo extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'SAFEGUARD',
+              'SAFEOPS AI',
               style: textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.w900,
                 letterSpacing: 1.1,

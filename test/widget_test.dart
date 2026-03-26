@@ -12,6 +12,6 @@ void main() {
     expect(find.textContaining('STAY SAFE'), findsOneWidget);
     expect(find.text('Login'), findsOneWidget);
     expect(find.text('Create Account'), findsOneWidget);
-    expect(find.text('SAFEGUARD'), findsOneWidget);
+    expect(find.text('SAFEOPS AI'), findsOneWidget);
   });
 }

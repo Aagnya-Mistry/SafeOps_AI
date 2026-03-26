@@ -27,7 +27,7 @@ class SafeguardApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Safeguard',
+      title: 'SafeOps AI',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.dark(),
       routes: {
